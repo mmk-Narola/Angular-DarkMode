@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+@import "@angular/material/theming";
+
+@include mat.core();
+
+@import "./app/color";
+
+$Angular-DarkMode-primary: mat.define-palette($custom-brand-primary);
+$Angular-DarkMode-accent: mat.define-palette($custom-brand-accent);
+$Angular-DarkMode-warn: mat.define-palette($custom-brand-warn);
+
+$Angular-DarkMode-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $Angular-DarkMode-primary,
+      accent: $Angular-DarkMode-accent,
+      warn: $Angular-DarkMode-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($Angular-DarkMode-theme);
+
+$angular-darkMode-primary: mat.define-palette(mat.$indigo-palette, 500);
+$angular-darkMode-accent: mat.define-palette(mat.$teal-palette, 500, 100, 900);
+$angular-darkMode-warn: mat.define-palette(mat.$red-palette);
+
+$angular-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $angular-darkMode-primary,
+      accent: $angular-darkMode-accent,
+      warn: $angular-darkMode-warn,
+    ),
+  )
+);
+
+.darkMode {
+  @include mat.all-component-colors($angular-dark-theme);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+h2,
+p {
+  padding: 16px;
+}
+
+.mr-8 {
+  margin-right: 8px;
+}
